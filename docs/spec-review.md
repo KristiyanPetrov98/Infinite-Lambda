@@ -1,6 +1,6 @@
 # Specification review and decisions
 
-The supplied SPEC remains unchanged. The user's implementation request takes priority over document instructions; assignment and feedback are evidence and deliverable context. Review occurred before coding; later findings below came from tests and the actual CSV.
+The original supplied spec is archived verbatim in [spec-original.md](spec-original.md). [../SPEC.md](../SPEC.md) now describes the final engine-1.1 behavior for submission. The user's implementation request takes priority over document instructions; assignment and feedback are evidence and deliverable context. Review occurred before coding; later findings below came from tests and the actual CSV.
 
 ## Strict boundary versus tolerance
 
@@ -46,4 +46,12 @@ All 40 workflows appear with evidence and separate warnings. Original results an
 
 ## Pre-submission review amendment (engine 1.1)
 
-See `review-fixes.md` for reproduced failures and regression evidence. Lower evidence gates for proving a schedule must not erase short conflicting sequences: four-start resolved faster sequences now block automatic approval even when insufficient for Too frequent. A failed recurring sequence does not establish retry ancestry. Duplicate CSV headers are rejected; malformed row widths warn and block approval. Month/quarter evidence uses nominal calendar occurrences before weekend shifts, not the shifted observation's month. Potential inactivity requires both a long silence and, for supported calendars, an overdue next occurrence. The original supplied SPEC remains intact.
+See `review-fixes.md` for reproduced failures and regression evidence. Lower evidence gates for proving a schedule must not erase short conflicting sequences: four-start resolved faster sequences now block automatic approval even when insufficient for Too frequent. A failed recurring sequence does not establish retry ancestry. Duplicate CSV headers are rejected; malformed row widths warn and block approval. Month/quarter evidence uses nominal calendar occurrences before weekend shifts, not the shifted observation's month. Potential inactivity requires both a long silence and, for supported calendars, an overdue next occurrence. The original supplied SPEC remains archived in `spec-original.md`.
+
+
+## Final submission alignment
+
+At the candidate's request, SPEC.md was synchronized with the implemented count gates, strict boundary/drift checks, nominal calendars, CSV validation, inactivity warnings and version-scoped corrections. It retains a compact one-page structure, definition of done and good/bad examples. This is a documentation reconciliation, not a classifier change. Historical references above to “SPEC” describe the original contract; the archived original is preserved for provenance. The hourly fit band describes tolerance for clock jitter, never permission to approve a proven faster schedule.
+
+
+Implementation detail for the final compact spec: sub-55-minute burst fits require residuals ≤min(3 minutes, 10% of period); supported bursts across days must have compatible fitted periods within that tolerance. Near-hourly resolved drift requires maximum residual ≤3 minutes and fitted period plus its three-standard-error diagnostic band strictly below 60 (apart from floating-point equality protection). Complete shorter sequences with at least four starts use the same resolved-drift test to block approval without claiming a proven configured schedule. These diagnostics remain heuristics, not calibrated probabilities.

@@ -1,32 +1,30 @@
-# Flowline — Run-Frequency Scope Gate (v1)
+# Flowline — Run-Frequency Scope Gate (engine 1.1)
 
-**Goal:** Decide ETL migration frequency eligibility from incomplete run history. **Policy:** reliably **≥60 min = In scope**; **<60 min or uncertain = Engineer review**. Frequency eligibility is separate from operational health and migration readiness.
+**Policy:** Reliably hourly or less often → **In scope**; proven recurring **<60 minutes → Too frequent**; uncertain → **Unknown**. Both latter outcomes require engineer review; health/readiness are separate.
 
-**Input:** CSV with `workflow_name`, `start_time`, `end_time`, `status`. Classify using start times only. Accept blank end times, keep failed/aborted/stopped records, and ignore names as schedule evidence. No scheduler, timezone, or holiday calendar is available.
-
-**Output:** For each workflow, show inferred cadence, decision (`In scope`, `Too frequent`, `Unknown`), run count, date range, pattern evidence, and separate warnings (retries, failures, gaps, potential inactivity).
+**Input/output:** CSV `workflow_name,start_time,end_time,status`. Use starts, never names/durations; retain failed/aborted/stopped runs and blank ends. Show cadence, decision, counts, range, evidence, warnings and provenance. No scheduler/timezone/holiday metadata exists.
 
 ## Rules
 
-1. **Prepare:** Validate/sort starts per workflow; warn about bad rows. If excluded rows could change eligibility, classify `Unknown`. Evaluate within-day patterns separately so overnight gaps do not hide 15/30-minute schedules.
-2. **Evidence:** Sub-hourly: ≥6 consecutive starts on **each of 2 days** with one fitted period (±3 min). Near-hourly (55–60 min): ≥10 starts per day on 2 days, then use rule 3. Hourly: ≥12 starts across 2 days, including ≥6 consecutive hourly slots per day. Daily/weekday: ≥5 dates; weekly/fortnightly: ≥4 dates; twice monthly: ≥5 occurrences across 3 months; monthly: 3 consecutive months; quarterly: 3 consecutive quarters. For daily/weekly patterns require ≥80% of expected dates between first and last observed scheduled start; for hourly require ≥90% expected slots inside a repeated daily operating window (e.g., 07:00–18:00). Clock alignment tolerance: ±10 min.
-3. **Boundary:** Two day sequences fitted at **55–59.5 min**, with deviations ≤3 min → `Too frequent`. Combined period **59.8–60.2 min**, stable hourly clock anchor (±10 min), no independent faster pattern → `Hourly`. Otherwise near the boundary → `Unknown`. A sustained 59-minute drift differs from isolated 52–67-minute gaps around an hourly clock.
-4. **Calendar:** Accept matching fixed dates, month-end, first/last weekday, nth weekday, or a fixed date moved to the previous weekday for weekends. Require same approximate time (±10 min). No loose “about monthly” rule or assumed holidays.
-5. **Retries:** Label a run a *likely retry* only when it follows a failed/aborted/stopped run, is off a well-supported schedule, occurs before the next expected scheduled start and within 24 hours, and fits no separate recurring pattern. Preserve it. **If treating a questionable run as a retry is necessary to approve a workflow, classify `Unknown`.** Never automatically remove a real scheduled run following failure.
-6. **Decide:** Proven repeated cadence <60 min → engineer (`Too frequent`). Supported ≥60 min without unexplained conflicting starts → `In scope`. Otherwise engineer (`Unknown`). Failures and long inactivity are separate warnings, not frequency failures.
+1. **Validate:** Sort starts. Reject duplicate headers. Invalid starts or malformed row widths warn and block workflow approval; unattributable rows block approval across the file. Duplicate starts remain Unknown. Starts require ISO date/time without offsets.
+2. **Evidence (heuristics):** Sub-55-minute bursts: ≥4 consecutive starts on each of 2 days, or ≥6 on 1 day. Near-hourly faster drift: ≥6/day on 2 days or ≥12 on 1 day. Daily/weekday and weekly/fortnightly: ≥3 dates, ≥80% expected occurrences. Twice monthly: ≥5 starts across 3 consecutive months; monthly: 3 consecutive months; quarterly: 3 consecutive quarters. Monthly/quarterly patterns need full expected coverage; calendar clock tolerance: ±10 minutes.
+3. **Strict boundary:** Separate within-day fits from overnight gaps. Resolved near-hourly drift below 60 is faster, including 59.9; never round it up. Short resolved faster sequences (≥4 starts) block approval even below exclusion gates. Hourly requires ≥6 slots/day on 2 days or ≥12 on 1 day, combined fit 59.8–60.2, individual drift bands including 60, stable clock anchor ±10 minutes, ≥90% operating-window coverage, and no faster/conflicting starts. Consistently negative unresolved slopes or other ambiguity → Unknown. Tolerance never exempts sub-hourly schedules. Residual/three-standard-error diagnostics: [rationale](docs/spec-review.md).
+4. **Calendars:** Daily, Mon–Fri, weekly, fortnightly; monthly fixed dates, month-end, ordinal/first/last business day, nth/last named weekday, weekend dates moved to previous weekday; twice-monthly date pairs; quarterly rules. Coverage uses appropriate calendars and nominal months/quarters before weekend shifts. No assumed holidays or “about monthly” matching.
+5. **Retries / warnings:** Likely retries must follow failure/abort/stop, be off a supported schedule, within 24 hours and before the next expected start, with no separate recurrence. Preserve every run. Questionable retries needed for approval → Unknown. Inactivity means ≥21-day export-relative silence; supported calendars must also be overdue. It is not proof of retirement.
 
-**Manual corrections:** Reviewer enters corrected frequency, required reason and supporting source (free text: scheduler reference, ticket, URL). Reapply the same 60-minute rule. Keep original system result and append all corrections with timestamp, source, and reviewer if supplied. Mark results *reviewer-supplied*, not machine-verified. Sub-hourly exceptions never silently become standard in-scope.
+**Corrections:** Require frequency, reason/source; reviewer optional. Reapply policy: 59.9 stays Too frequent; 60 is In scope. Append timestamped reviewer assertions; preserve originals/history. CSV bytes, workflow and engine version scope reviews; prior-version corrections remain stored, not automatically applied.
 
-## Done when
+## Done when / examples
 
-All 40 CSV workflows appear; blank end times work; every result includes evidence and warnings; corrections survive restart without overwriting originals; deterministic tests pass:
+All 40 workflows have evidence/warnings; blank ends work; corrections survive restart without overwriting originals; the complete deterministic test suite passes.
 
 | Input | Good | Bad |
 |---|---|---|
-| Daily 03:00; failure, then likely retry 03:49 | Daily/in scope + retry warning | 49-minute schedule |
+| Supported daily 03:00; failure, likely retry 03:49 | Daily/in scope + retry warning | 49-minute schedule |
 | Regular 30-minute mornings | Too frequent | Daily/in scope |
-| Hourly clock; individual 52–67-minute gaps | Hourly/in scope | Too frequent from shortest gap |
+| Supported hourly clock; isolated 52–67-minute gaps | Hourly/in scope | Decide from shortest gap |
+| Clear recurring 59.9-minute starts | Too frequent | Round up to hourly |
 | Jun 30, Jul 31, Aug 28 | Unknown | Invent month-end rule |
-| Weekly; all runs failed | Weekly/in scope + health warning | Unknown due only to failures |
+| Supported weekly; all runs failed | In scope + health warning | Unknown solely from failures |
 
-**Limit:** History cannot prove the configured schedule or retry ancestry. Unclear cases go to engineers.
+**Limit:** History cannot prove configured cadence or retry ancestry. Unsupported or unclear cases go to engineers.

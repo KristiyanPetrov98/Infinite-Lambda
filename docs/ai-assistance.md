@@ -49,3 +49,15 @@ See `development-log.md` for actual diagnoses/fixes, `spec-review.md` for ration
 The user requested an independent, critical review of the actual code against the assignment, SPEC and six feedback messages, focusing on unsafe approvals, retries, the boundary, calendars, invalid records, audit preservation, reproducibility and documentation. The review was another adversarial pass by the same Codex assistant, not an independent human or second-model certification. Its concrete counterexamples exposed bugs not covered by the original 59 passing tests.
 
 The user's update instruction was: “Alright, I agree with all of your findings. Update the project and re-run the tests.” Codex implemented the focused fixes and regression tests documented in `review-fixes.md`, updated the evidence and documentation, and reran the complete suite. Earlier statements about 59 tests describe the historical baseline; the current suite has 72 passing tests. Actual human time spent remains unavailable and has not been invented.
+
+
+## Final submission pass
+
+The candidate requested a final submission-readiness pass: synchronize the compact SPEC with implementation, document PowerShell and Unix commands, audit assignment deliverables/AI records/tracked files, run the complete suite, verify all generated results, and commit/push documentation-only changes to `flowline-prototype` without merging `main`. They confirmed that the prototype runs locally on Windows. Codex did not independently execute PowerShell or macOS; the documented commands use the actual Python/venv paths and pinned dependency file. No runtime or classifier changes were made in this pass. The original spec was archived verbatim; SPEC.md is now the final behavior contract. Raw runner logs were removed from the tracked submission.
+
+### TODO — candidate-supplied information before submission
+
+- **Time spent:** TODO: supply your recorded duration or an honest, explicitly labeled estimate. Include discovery, implementation/AI interaction, review/fixes, and manual testing as appropriate; identify the total and avoid double-counting overlapping activities. None of these durations was provided to the assistant. Do not use test runtimes or the assignment's suggested four hours as measured effort.
+- **Earlier discovery AI prompts/conversations:** TODO: attach the actual earlier prompt record if available. If unavailable, explicitly confirm that fact; the supplied implementation prompt and summarized subsequent review instructions above are the records available in this session. No missing conversation has been reconstructed.
+
+This record includes the original implementation prompt verbatim and labels later prompts as summaries/quotations. It is not a complete tool-call transcript or independent human certification. Actual AI errors are documented in the development log and review-fixes record.

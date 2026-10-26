@@ -4,3 +4,16 @@ __pycache__/
 .streamlit/
 .local/
 *.sqlite3*
+
+# Local secrets and execution artifacts
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.log
+docs/test-results.txt
+.coverage
+htmlcov/
