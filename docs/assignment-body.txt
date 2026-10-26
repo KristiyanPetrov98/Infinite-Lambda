@@ -1,0 +1,35 @@
+ssignment
+Take-home brief 
+
+
+The task
+Companies moving off older ETL tools such as Informatica PowerCenter have hundreds of scheduled workflows. Before we migrate one, we need to know how often it runs, because that decides how it is migrated and checked. The customer's run-history export is usually incomplete. Use one rule: a workflow is in scope if it runs hourly or less often, and anything faster, or whose frequency cannot be worked out, goes to an engineer.
+
+We send you run_history.csv (one row per run for about 40 workflows over 90 days) and feedback.md (six messages from current users). All data is synthetic. 
+
+
+
+What to submit
+Please submit a repository or zipped folder with:
+
+A one-page spec for this step, with a definition of done and at least three examples of good and bad output.
+
+A working prototype that reads the CSV, shows each workflow's frequency and scope decision, and lets a user correct a decision.
+
+The prompts or AI conversations you used, and how long you spent.
+
+A short README: how to run it, what you assumed and left out, where your logic is most likely wrong, and where an AI tool got something wrong.
+
+
+
+Using coding agents
+We expect you to use AI tools such as Claude, ChatGPT/Codex or Cursor. 
+
+
+
+Logistics
+Effort: about 04 hours. Please do not over-invest.
+
+Deadline: 03 days to 01 week from receipt.
+
+Questions: contact Chau @ chau@infinitelambda.com

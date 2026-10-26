@@ -1,0 +1,69 @@
+test_correction_persists_in_new_app_and_preserves_original (test_app.AppTests.test_correction_persists_in_new_app_and_preserves_original) ... 2026-10-26 09:28:22.510 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-26 09:28:26.401 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_engineer_filter (test_app.AppTests.test_engineer_filter) ... 2026-10-26 09:28:26.580 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_initial_table_contains_every_workflow (test_app.AppTests.test_initial_table_contains_every_workflow) ... 2026-10-26 09:28:26.664 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_required_fields_reject_empty_correction (test_app.AppTests.test_required_fields_reject_empty_correction) ... 2026-10-26 09:28:26.711 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_all_source_workflows_appear_once (test_classifier.ActualCSVTests.test_all_source_workflows_appear_once) ... ok
+test_customer_examples_are_explained (test_classifier.ActualCSVTests.test_customer_examples_are_explained) ... ok
+test_no_calendar_rule_invented_for_depreciation (test_classifier.ActualCSVTests.test_no_calendar_rule_invented_for_depreciation) ... ok
+test_original_vs_revised_thresholds_report_actual_changes (test_classifier.ActualCSVTests.test_original_vs_revised_thresholds_report_actual_changes) ... ok
+test_exact_periods_below_boundary_never_approve (test_classifier.BoundaryTests.test_exact_periods_below_boundary_never_approve) ... ok
+test_extra_independent_fast_pattern_blocks_daily (test_classifier.BoundaryTests.test_extra_independent_fast_pattern_blocks_daily) ... ok
+test_hourly_business_window_excludes_weekend (test_classifier.BoundaryTests.test_hourly_business_window_excludes_weekend) ... ok
+test_hourly_missing_days_fail_coverage (test_classifier.BoundaryTests.test_hourly_missing_days_fail_coverage) ... ok
+test_hourly_with_52_to_67_minute_gaps (test_classifier.BoundaryTests.test_hourly_with_52_to_67_minute_gaps) ... ok
+test_overnight_does_not_hide_fast_schedule (test_classifier.BoundaryTests.test_overnight_does_not_hide_fast_schedule) ... ok
+test_policy_boundary_has_no_rounding (test_classifier.BoundaryTests.test_policy_boundary_has_no_rounding) ... ok
+test_proven_fast_day_is_not_hidden_by_hourly_day (test_classifier.BoundaryTests.test_proven_fast_day_is_not_hidden_by_hourly_day) ... ok
+test_short_conflicting_daily_periods_are_unknown (test_classifier.BoundaryTests.test_short_conflicting_daily_periods_are_unknown) ... ok
+test_unknown_hourly_conflicting_start (test_classifier.BoundaryTests.test_unknown_hourly_conflicting_start) ... ok
+test_unresolved_drift_is_reviewed (test_classifier.BoundaryTests.test_unresolved_drift_is_reviewed) ... ok
+test_missing_majority_does_not_approve (test_classifier.CalendarTests.test_missing_majority_does_not_approve) ... ok
+test_monthly_rules (test_classifier.CalendarTests.test_monthly_rules) ... ok
+test_no_about_monthly_matching (test_classifier.CalendarTests.test_no_about_monthly_matching) ... ok
+test_no_invented_month_end_or_holidays (test_classifier.CalendarTests.test_no_invented_month_end_or_holidays) ... ok
+test_quarterly_needs_three_quarters (test_classifier.CalendarTests.test_quarterly_needs_three_quarters) ... ok
+test_skipped_month_is_unknown (test_classifier.CalendarTests.test_skipped_month_is_unknown) ... ok
+test_twice_monthly (test_classifier.CalendarTests.test_twice_monthly) ... ok
+test_weekday_missing_dates_use_weekdays_denominator (test_classifier.CalendarTests.test_weekday_missing_dates_use_weekdays_denominator) ... ok
+test_weekdays_expected_calendar (test_classifier.CalendarTests.test_weekdays_expected_calendar) ... ok
+test_original_near_hourly_counts_are_stricter (test_classifier.EvidenceTests.test_original_near_hourly_counts_are_stricter) ... ok
+test_short_clear_fast_history_single_day (test_classifier.EvidenceTests.test_short_clear_fast_history_single_day) ... ok
+test_short_fast_history_two_days (test_classifier.EvidenceTests.test_short_fast_history_two_days) ... ok
+test_single_day_hourly_evidence (test_classifier.EvidenceTests.test_single_day_hourly_evidence) ... ok
+test_three_daily_dates (test_classifier.EvidenceTests.test_three_daily_dates) ... ok
+test_three_weekly_dates (test_classifier.EvidenceTests.test_three_weekly_dates) ... ok
+test_too_little_evidence_remains_unknown (test_classifier.EvidenceTests.test_too_little_evidence_remains_unknown) ... ok
+test_all_failed_weekly_is_eligible (test_classifier.RetryAndInputTests.test_all_failed_weekly_is_eligible) ... ok
+test_all_invalid_workflow_is_retained (test_classifier.RetryAndInputTests.test_all_invalid_workflow_is_retained) ... ok
+test_blank_end_time_and_aborted_status (test_classifier.RetryAndInputTests.test_blank_end_time_and_aborted_status) ... ok
+test_daily_likely_retry (test_classifier.RetryAndInputTests.test_daily_likely_retry) ... ok
+test_duplicate_starts_unknown (test_classifier.RetryAndInputTests.test_duplicate_starts_unknown) ... ok
+test_end_times_do_not_change_frequency (test_classifier.RetryAndInputTests.test_end_times_do_not_change_frequency) ... ok
+test_extra_after_success_is_unknown (test_classifier.RetryAndInputTests.test_extra_after_success_is_unknown) ... ok
+test_fast_scheduled_runs_after_failure_are_preserved (test_classifier.RetryAndInputTests.test_fast_scheduled_runs_after_failure_are_preserved) ... ok
+test_invalid_start_blocks_approval (test_classifier.RetryAndInputTests.test_invalid_start_blocks_approval) ... ok
+test_missing_headers_and_empty_input_rejected (test_classifier.RetryAndInputTests.test_missing_headers_and_empty_input_rejected) ... ok
+test_missing_workflow_name_blocks_other_approvals (test_classifier.RetryAndInputTests.test_missing_workflow_name_blocks_other_approvals) ... ok
+test_names_and_row_order_do_not_change_inference (test_classifier.RetryAndInputTests.test_names_and_row_order_do_not_change_inference) ... ok
+test_offset_timestamps_reviewed (test_classifier.RetryAndInputTests.test_offset_timestamps_reviewed) ... ok
+test_recurrent_extra_after_failures_is_not_retry (test_classifier.RetryAndInputTests.test_recurrent_extra_after_failures_is_not_retry) ... ok
+test_retry_crossing_midnight (test_classifier.RetryAndInputTests.test_retry_crossing_midnight) ... ok
+test_all_named_calendar_frequencies_follow_policy (test_corrections.CorrectionTests.test_all_named_calendar_frequencies_follow_policy) ... ok
+test_corrections_never_leak_between_datasets (test_corrections.CorrectionTests.test_corrections_never_leak_between_datasets) ... ok
+test_engine_version_scopes_history (test_corrections.CorrectionTests.test_engine_version_scopes_history) ... ok
+test_invalid_intervals_rejected (test_corrections.CorrectionTests.test_invalid_intervals_rejected) ... ok
+test_original_never_overwritten (test_corrections.CorrectionTests.test_original_never_overwritten) ... ok
+test_requires_reason_and_supporting_source (test_corrections.CorrectionTests.test_requires_reason_and_supporting_source) ... ok
+test_restart_preserves_original_and_every_correction (test_corrections.CorrectionTests.test_restart_preserves_original_and_every_correction) ... ok
+test_reviewer_optional_and_unknown_supported (test_corrections.CorrectionTests.test_reviewer_optional_and_unknown_supported) ... ok
+test_same_policy_on_original_fast_and_corrected_fast (test_corrections.CorrectionTests.test_same_policy_on_original_fast_and_corrected_fast) ... ok
+
+----------------------------------------------------------------------
+Ran 59 tests in 10.248s
+
+OK

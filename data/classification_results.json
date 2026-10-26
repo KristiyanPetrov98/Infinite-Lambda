@@ -1,0 +1,836 @@
+{
+  "dataset_sha256": "2fc577dc51570868901692b8cbb181b03ee4b928c8903da2563849e20ddd5f15",
+  "counts": {
+    "In scope": 31,
+    "Unknown": 6,
+    "Too frequent": 3
+  },
+  "results": [
+    {
+      "workflow": "wf_BILL_INVOICE_WEEKLY",
+      "cadence": "Monthly (first weekday)",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-07-01 05:00:06",
+      "last_start": "2026-09-01 05:00:37",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (first weekday); observed clock anchor near 05:00.",
+        "Equivalent observed fits (not distinguishable from this history): Monthly (business day 1 (Mon\u2013Fri))"
+      ],
+      "warnings": [
+        "Potential inactivity: last run 25 days before export's latest start. Not proof of retirement.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_CRM_CONTACTS",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 84,
+      "valid_start_count": 84,
+      "first_start": "2026-06-29 01:00:13",
+      "last_start": "2026-09-26 01:00:16",
+      "evidence": [
+        "84 scheduled starts; 93.3% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 01:00."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 aborted",
+        "Gaps in expected schedule; missing logs and missed executions cannot be distinguished.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_DIM_CUSTOMER",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 90,
+      "valid_start_count": 90,
+      "first_start": "2026-06-29 04:31:10",
+      "last_start": "2026-09-26 04:30:56",
+      "evidence": [
+        "90 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 04:31."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 2 stopped",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_DQ_ADHOC_RECON",
+      "cadence": "Unresolved",
+      "decision": "Unknown",
+      "run_count": 9,
+      "valid_start_count": 9,
+      "first_start": "2026-07-02 12:12:30",
+      "last_start": "2026-09-16 16:54:58",
+      "evidence": [
+        "No supported recurring pattern satisfies the evidence, coverage and clock-alignment gates.",
+        "9 starts on 7 distinct dates. Sparse or irregular history; names are not schedule evidence."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 2 failed",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_ERP_JRNL_15MIN",
+      "cadence": "Hourly",
+      "decision": "In scope",
+      "run_count": 36,
+      "valid_start_count": 36,
+      "first_start": "2026-09-24 07:22:12",
+      "last_start": "2026-09-26 18:21:10",
+      "evidence": [
+        "2026-09-24: 12 starts, fitted period 59.9369 min, max residual 3.08 min, drift band \u00b10.3900 min.",
+        "2026-09-25: 12 starts, fitted period 59.7409 min, max residual 2.75 min, drift band \u00b10.3153 min.",
+        "2026-09-26: 12 starts, fitted period 60.0276 min, max residual 3.46 min, drift band \u00b10.4399 min.",
+        "Hourly clock anchor :19.97; window 07:00\u201318:00; 36/36 expected slots (100.0%), calendar days."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_ACCRUALS_V2",
+      "cadence": "Unresolved",
+      "decision": "Unknown",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-08-04 14:02:48",
+      "last_start": "2026-09-15 10:48:47",
+      "evidence": [
+        "No supported recurring pattern satisfies the evidence, coverage and clock-alignment gates.",
+        "3 starts on 2 distinct dates. Sparse or irregular history; names are not schedule evidence."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 3 failed",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_FIN_AP_INVOICES",
+      "cadence": "Weekdays (Mon\u2013Fri)",
+      "decision": "In scope",
+      "run_count": 66,
+      "valid_start_count": 66,
+      "first_start": "2026-06-29 05:31:06",
+      "last_start": "2026-09-25 05:30:09",
+      "evidence": [
+        "65 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekdays (Mon\u2013Fri); observed clock anchor near 05:31."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "Likely retries at CSV rows [698]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        698
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_BUDGET_ACTUALS",
+      "cadence": "Monthly (business day 3 (Mon\u2013Fri))",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-07-03 06:00:54",
+      "last_start": "2026-09-03 06:00:22",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (business day 3 (Mon\u2013Fri)); observed clock anchor near 06:00."
+      ],
+      "warnings": [
+        "Potential inactivity: last run 23 days before export's latest start. Not proof of retirement.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_EXPENSES_SYNC",
+      "cadence": "Fortnightly",
+      "decision": "In scope",
+      "run_count": 6,
+      "valid_start_count": 6,
+      "first_start": "2026-07-06 09:00:29",
+      "last_start": "2026-09-14 09:01:00",
+      "evidence": [
+        "6 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Fortnightly; observed clock anchor near 09:00."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_FA_DEPRECIATION",
+      "cadence": "Unresolved",
+      "decision": "Unknown",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-06-30 20:31:04",
+      "last_start": "2026-08-28 20:30:46",
+      "evidence": [
+        "No supported recurring pattern satisfies the evidence, coverage and clock-alignment gates.",
+        "3 starts on 3 distinct dates. Sparse or irregular history; names are not schedule evidence."
+      ],
+      "warnings": [
+        "Potential inactivity: last run 29 days before export's latest start. Not proof of retirement.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_FIN_FX_REVAL_WEEKLY",
+      "cadence": "Weekly (Sunday)",
+      "decision": "In scope",
+      "run_count": 12,
+      "valid_start_count": 12,
+      "first_start": "2026-07-05 03:00:04",
+      "last_start": "2026-09-20 03:00:26",
+      "evidence": [
+        "12 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekly (Sunday); observed clock anchor near 03:00."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_GL_DAILY_LOAD",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 93,
+      "valid_start_count": 93,
+      "first_start": "2026-06-29 02:00:41",
+      "last_start": "2026-09-26 02:00:55",
+      "evidence": [
+        "90 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 02:00."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 3 failed",
+        "Likely retries at CSV rows [79, 321, 333]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        79,
+        321,
+        333
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_INTERCO_RECON",
+      "cadence": "Monthly (day 7)",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-07-07 07:00:16",
+      "last_start": "2026-09-07 07:00:51",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (day 7); observed clock anchor near 07:00.",
+        "Equivalent observed fits (not distinguishable from this history): Monthly (business day 5 (Mon\u2013Fri)); Monthly (day 7, previous weekday on weekends)"
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_JRNL_REPOST",
+      "cadence": "Unresolved",
+      "decision": "Unknown",
+      "run_count": 6,
+      "valid_start_count": 6,
+      "first_start": "2026-07-02 15:41:09",
+      "last_start": "2026-09-09 17:33:42",
+      "evidence": [
+        "No supported recurring pattern satisfies the evidence, coverage and clock-alignment gates.",
+        "6 starts on 6 distinct dates. Sparse or irregular history; names are not schedule evidence."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_FIN_MONTH_END_CLOSE",
+      "cadence": "Monthly (month-end)",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-06-30 22:00:58",
+      "last_start": "2026-08-31 22:00:07",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (month-end); observed clock anchor near 22:00.",
+        "Equivalent observed fits (not distinguishable from this history): Monthly (last weekday)"
+      ],
+      "warnings": [
+        "Potential inactivity: last run 26 days before export's latest start. Not proof of retirement.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_FIN_QTR_REG_RPT",
+      "cadence": "Unresolved",
+      "decision": "Unknown",
+      "run_count": 1,
+      "valid_start_count": 1,
+      "first_start": "2026-07-10 21:00:36",
+      "last_start": "2026-07-10 21:00:36",
+      "evidence": [
+        "No supported recurring pattern satisfies the evidence, coverage and clock-alignment gates.",
+        "1 starts on 1 distinct dates. Sparse or irregular history; names are not schedule evidence."
+      ],
+      "warnings": [
+        "Potential inactivity: last run 78 days before export's latest start. Not proof of retirement.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_HR_ABSENCE_FEED",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 19,
+      "valid_start_count": 19,
+      "first_start": "2026-09-08 07:16:05",
+      "last_start": "2026-09-26 07:15:23",
+      "evidence": [
+        "19 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 07:16."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_HR_PAYROLL_MONTHLY",
+      "cadence": "Monthly (day 25, previous weekday on weekends)",
+      "decision": "In scope",
+      "run_count": 4,
+      "valid_start_count": 4,
+      "first_start": "2026-07-24 19:00:27",
+      "last_start": "2026-09-25 19:00:14",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (day 25, previous weekday on weekends); observed clock anchor near 19:00."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "Likely retries at CSV rows [629]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        629
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_HR_PENSION_EXTRACT",
+      "cadence": "Monthly (day 20)",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-07-20 20:00:53",
+      "last_start": "2026-09-20 20:00:11",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (day 20); observed clock anchor near 20:00."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_HR_TIMESHEETS_FN",
+      "cadence": "Fortnightly",
+      "decision": "In scope",
+      "run_count": 7,
+      "valid_start_count": 7,
+      "first_start": "2026-07-02 18:00:39",
+      "last_start": "2026-09-24 18:00:47",
+      "evidence": [
+        "7 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Fortnightly; observed clock anchor near 18:00."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_INV_STOCK_HOURLY",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 91,
+      "valid_start_count": 91,
+      "first_start": "2026-06-29 23:50:10",
+      "last_start": "2026-09-26 23:50:33",
+      "evidence": [
+        "90 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 23:50."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "Likely retries at CSV rows [574]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        574
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_LEGACY_SFTP_PULL",
+      "cadence": "Weekly (Tuesday)",
+      "decision": "In scope",
+      "run_count": 13,
+      "valid_start_count": 13,
+      "first_start": "2026-06-30 05:01:03",
+      "last_start": "2026-09-22 05:00:46",
+      "evidence": [
+        "13 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekly (Tuesday); observed clock anchor near 05:01."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 13 failed",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_MDM_PRODUCT_MERGE",
+      "cadence": "Unresolved",
+      "decision": "Unknown",
+      "run_count": 11,
+      "valid_start_count": 11,
+      "first_start": "2026-07-03 14:22:34",
+      "last_start": "2026-09-21 08:09:03",
+      "evidence": [
+        "No supported recurring pattern satisfies the evidence, coverage and clock-alignment gates.",
+        "11 starts on 11 distinct dates. Sparse or irregular history; names are not schedule evidence."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 aborted",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_MKT_CAMPAIGNS",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 51,
+      "valid_start_count": 51,
+      "first_start": "2026-06-29 06:30:07",
+      "last_start": "2026-08-17 06:30:20",
+      "evidence": [
+        "50 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 06:30."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "Potential inactivity: last run 40 days before export's latest start. Not proof of retirement.",
+        "Likely retries at CSV rows [372]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        372
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_MKT_GDPR_PURGE",
+      "cadence": "Monthly (1 Sunday)",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-07-05 02:00:06",
+      "last_start": "2026-09-06 02:01:08",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (1 Sunday); observed clock anchor near 02:00."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_MKT_SEGMENT_REBUILD",
+      "cadence": "Weekly (Saturday)",
+      "decision": "In scope",
+      "run_count": 14,
+      "valid_start_count": 14,
+      "first_start": "2026-07-04 21:00:14",
+      "last_start": "2026-09-26 21:00:10",
+      "evidence": [
+        "13 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekly (Saturday); observed clock anchor near 21:00."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 aborted",
+        "Likely retries at CSV rows [607]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        607
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_OPS_LOG_ARCHIVE",
+      "cadence": "Weekly (Wednesday)",
+      "decision": "In scope",
+      "run_count": 13,
+      "valid_start_count": 13,
+      "first_start": "2026-07-01 01:30:18",
+      "last_start": "2026-09-23 01:30:48",
+      "evidence": [
+        "13 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekly (Wednesday); observed clock anchor near 01:30."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_PAY_AUTH_HOURLY",
+      "cadence": "Every 30.00 minutes",
+      "decision": "Too frequent",
+      "run_count": 36,
+      "valid_start_count": 36,
+      "first_start": "2026-09-24 07:00:36",
+      "last_start": "2026-09-26 12:30:20",
+      "evidence": [
+        "Recurring sub-hourly sequences on 3 day(s); at least 4 consecutive starts; median fitted period 30.0029 min.",
+        "Supporting dates: 2026-09-24, 2026-09-25, 2026-09-26",
+        "All execution statuses included; overnight gaps excluded from period fitting."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_PROC_SUPPLIER_DAILY",
+      "cadence": "Weekly (Monday)",
+      "decision": "In scope",
+      "run_count": 13,
+      "valid_start_count": 13,
+      "first_start": "2026-06-29 04:00:51",
+      "last_start": "2026-09-21 04:00:25",
+      "evidence": [
+        "13 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekly (Monday); observed clock anchor near 04:00."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_RISK_EXPOSURE_WKLY",
+      "cadence": "Weekly (Friday)",
+      "decision": "In scope",
+      "run_count": 14,
+      "valid_start_count": 14,
+      "first_start": "2026-07-03 20:01:14",
+      "last_start": "2026-09-25 20:01:13",
+      "evidence": [
+        "13 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekly (Friday); observed clock anchor near 20:01."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "Likely retries at CSV rows [524]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        524
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_RISK_PNL_DAILY",
+      "cadence": "Every 29.98 minutes",
+      "decision": "Too frequent",
+      "run_count": 20,
+      "valid_start_count": 20,
+      "first_start": "2026-09-24 08:00:39",
+      "last_start": "2026-09-25 12:30:22",
+      "evidence": [
+        "Recurring sub-hourly sequences on 2 day(s); at least 4 consecutive starts; median fitted period 29.9774 min.",
+        "Supporting dates: 2026-09-24, 2026-09-25",
+        "All execution statuses included; overnight gaps excluded from period fitting."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_SLS_COMMISSIONS",
+      "cadence": "Twice monthly (days 1, 15)",
+      "decision": "In scope",
+      "run_count": 6,
+      "valid_start_count": 6,
+      "first_start": "2026-07-01 22:01:04",
+      "last_start": "2026-09-15 22:00:31",
+      "evidence": [
+        "6 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Twice monthly (days 1, 15); observed clock anchor near 22:01."
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_SLS_ORDERS_INCR",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 92,
+      "valid_start_count": 92,
+      "first_start": "2026-06-29 03:15:43",
+      "last_start": "2026-09-26 03:15:31",
+      "evidence": [
+        "90 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 03:15."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 2 failed",
+        "Likely retries at CSV rows [391, 541]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [
+        391,
+        541
+      ],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_SLS_PIPELINE",
+      "cadence": "Weekdays (Mon\u2013Fri)",
+      "decision": "In scope",
+      "run_count": 65,
+      "valid_start_count": 65,
+      "first_start": "2026-06-29 18:30:09",
+      "last_start": "2026-09-25 18:30:40",
+      "evidence": [
+        "65 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekdays (Mon\u2013Fri); observed clock anchor near 18:30."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 stopped",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_SLS_TERRITORY_LOAD",
+      "cadence": "Monthly (day 2)",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-07-02 04:15:43",
+      "last_start": "2026-09-02 04:15:21",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (day 2); observed clock anchor near 04:15."
+      ],
+      "warnings": [
+        "Potential inactivity: last run 24 days before export's latest start. Not proof of retirement.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_TAX_VAT_EXTRACT",
+      "cadence": "Monthly (day 10)",
+      "decision": "In scope",
+      "run_count": 3,
+      "valid_start_count": 3,
+      "first_start": "2026-07-10 03:00:43",
+      "last_start": "2026-09-10 03:00:23",
+      "evidence": [
+        "3 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Monthly (day 10); observed clock anchor near 03:00.",
+        "Equivalent observed fits (not distinguishable from this history): Monthly (day 10, previous weekday on weekends)"
+      ],
+      "warnings": [
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_TRD_POSITIONS",
+      "cadence": "Every 15.00 minutes",
+      "decision": "Too frequent",
+      "run_count": 24,
+      "valid_start_count": 24,
+      "first_start": "2026-09-24 07:00:01",
+      "last_start": "2026-09-25 09:45:37",
+      "evidence": [
+        "Recurring sub-hourly sequences on 2 day(s); at least 4 consecutive starts; median fitted period 14.9958 min.",
+        "Supporting dates: 2026-09-24, 2026-09-25",
+        "All execution statuses included; overnight gaps excluded from period fitting."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Engineer review"
+    },
+    {
+      "workflow": "wf_TRSY_CASH_DAILY",
+      "cadence": "Weekdays (Mon\u2013Fri)",
+      "decision": "In scope",
+      "run_count": 64,
+      "valid_start_count": 64,
+      "first_start": "2026-06-29 07:01:02",
+      "last_start": "2026-09-25 07:01:10",
+      "evidence": [
+        "64 scheduled starts; 98.5% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Weekdays (Mon\u2013Fri); observed clock anchor near 07:01."
+      ],
+      "warnings": [
+        "Gaps in expected schedule; missing logs and missed executions cannot be distinguished.",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_WEB_CLICKS",
+      "cadence": "Hourly",
+      "decision": "In scope",
+      "run_count": 72,
+      "valid_start_count": 72,
+      "first_start": "2026-09-24 00:01:37",
+      "last_start": "2026-09-26 23:01:10",
+      "evidence": [
+        "2026-09-24: 24 starts, fitted period 60.0103 min, max residual 3.15 min, drift band \u00b10.1787 min.",
+        "2026-09-25: 24 starts, fitted period 60.0737 min, max residual 4.09 min, drift band \u00b10.2289 min.",
+        "2026-09-26: 24 starts, fitted period 59.9746 min, max residual 4.24 min, drift band \u00b10.2142 min.",
+        "Hourly clock anchor :4.93; window 00:00\u201323:00; 72/72 expected slots (100.0%), calendar days."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 aborted, 1 failed",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    },
+    {
+      "workflow": "wf_WMS_SHIPMENTS",
+      "cadence": "Daily",
+      "decision": "In scope",
+      "run_count": 90,
+      "valid_start_count": 90,
+      "first_start": "2026-06-29 21:45:38",
+      "last_start": "2026-09-26 21:45:46",
+      "evidence": [
+        "90 scheduled starts; 100.0% of expected occurrences between first and last matching start; clock tolerance \u00b110 min.",
+        "Pattern: Daily; observed clock anchor near 21:45."
+      ],
+      "warnings": [
+        "Execution health (does not determine frequency): 1 failed",
+        "History inference only; scheduler, timezone and holiday calendar are unavailable."
+      ],
+      "likely_retry_rows": [],
+      "engine_version": "1.0",
+      "routing": "Standard migration"
+    }
+  ]
+}
