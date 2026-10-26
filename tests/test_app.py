@@ -61,6 +61,20 @@ class AppTests(unittest.TestCase):
         self.assertFalse(self.app.exception)
         self.assertTrue(all(self.app.dataframe[0].value["Decision"] != "In scope"))
 
+    def test_upgrade_warns_without_losing_old_corrections(self):
+        from classifier import classify, read_history
+        from corrections import CorrectionStore, dataset_id
+        from pathlib import Path
+        data = Path("data/run_history.csv").read_bytes()
+        r = classify(read_history(data.decode()))[0]
+        r.engine_version = "1.0"
+        store = CorrectionStore(os.environ["FLOWLINE_DB"])
+        store.append(dataset_id(data), r, "Daily", "", "Prior review", "Scheduler reference")
+        self.app.run()
+        self.assertFalse(self.app.exception)
+        self.assertTrue(any("previous-version corrections are preserved" in w.value for w in self.app.warning))
+        self.assertEqual(len(store.history(dataset_id(data), r)), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

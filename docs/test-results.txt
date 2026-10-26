@@ -1,11 +1,13 @@
-test_correction_persists_in_new_app_and_preserves_original (test_app.AppTests.test_correction_persists_in_new_app_and_preserves_original) ... 2026-10-26 09:28:22.510 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
-2026-10-26 09:28:26.401 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_correction_persists_in_new_app_and_preserves_original (test_app.AppTests.test_correction_persists_in_new_app_and_preserves_original) ... 2026-10-26 14:28:21.501 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-10-26 14:28:24.755 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_engineer_filter (test_app.AppTests.test_engineer_filter) ... 2026-10-26 09:28:26.580 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_engineer_filter (test_app.AppTests.test_engineer_filter) ... 2026-10-26 14:28:24.932 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_initial_table_contains_every_workflow (test_app.AppTests.test_initial_table_contains_every_workflow) ... 2026-10-26 09:28:26.664 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_initial_table_contains_every_workflow (test_app.AppTests.test_initial_table_contains_every_workflow) ... 2026-10-26 14:28:25.022 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
-test_required_fields_reject_empty_correction (test_app.AppTests.test_required_fields_reject_empty_correction) ... 2026-10-26 09:28:26.711 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+test_required_fields_reject_empty_correction (test_app.AppTests.test_required_fields_reject_empty_correction) ... 2026-10-26 14:28:25.066 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_upgrade_warns_without_losing_old_corrections (test_app.AppTests.test_upgrade_warns_without_losing_old_corrections) ... 2026-10-26 14:28:25.191 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
 ok
 test_all_source_workflows_appear_once (test_classifier.ActualCSVTests.test_all_source_workflows_appear_once) ... ok
 test_customer_examples_are_explained (test_classifier.ActualCSVTests.test_customer_examples_are_explained) ... ok
@@ -62,8 +64,20 @@ test_requires_reason_and_supporting_source (test_corrections.CorrectionTests.tes
 test_restart_preserves_original_and_every_correction (test_corrections.CorrectionTests.test_restart_preserves_original_and_every_correction) ... ok
 test_reviewer_optional_and_unknown_supported (test_corrections.CorrectionTests.test_reviewer_optional_and_unknown_supported) ... ok
 test_same_policy_on_original_fast_and_corrected_fast (test_corrections.CorrectionTests.test_same_policy_on_original_fast_and_corrected_fast) ... ok
+test_bad_anonymous_row_still_blocks_all_approvals (test_review_regressions.ReviewRegressions.test_bad_anonymous_row_still_blocks_all_approvals) ... ok
+test_bad_row_width_retains_workflow_but_blocks_approval (test_review_regressions.ReviewRegressions.test_bad_row_width_retains_workflow_but_blocks_approval) ... ok
+test_duplicate_headers_rejected (test_review_regressions.ReviewRegressions.test_duplicate_headers_rejected) ... ok
+test_monthly_not_yet_due_has_no_inactivity_warning (test_review_regressions.ReviewRegressions.test_monthly_not_yet_due_has_no_inactivity_warning) ... ok
+test_original_six_extra_59_minute_review_case (test_review_regressions.ReviewRegressions.test_original_six_extra_59_minute_review_case) ... ok
+test_overdue_monthly_still_warns_without_changing_scope (test_review_regressions.ReviewRegressions.test_overdue_monthly_still_warns_without_changing_scope) ... ok
+test_previous_weekday_does_not_hide_missing_nominal_month (test_review_regressions.ReviewRegressions.test_previous_weekday_does_not_hide_missing_nominal_month) ... ok
+test_previous_weekday_uses_nominal_consecutive_months (test_review_regressions.ReviewRegressions.test_previous_weekday_uses_nominal_consecutive_months) ... ok
+test_regular_failed_chain_is_not_automatically_retries (test_review_regressions.ReviewRegressions.test_regular_failed_chain_is_not_automatically_retries) ... ok
+test_shifted_quarterly_uses_nominal_quarters (test_review_regressions.ReviewRegressions.test_shifted_quarterly_uses_nominal_quarters) ... ok
+test_short_drift_after_supported_hourly_history_blocks_approval (test_review_regressions.ReviewRegressions.test_short_drift_after_supported_hourly_history_blocks_approval) ... ok
+test_short_faster_history_does_not_need_failures_to_block (test_review_regressions.ReviewRegressions.test_short_faster_history_does_not_need_failures_to_block) ... ok
 
 ----------------------------------------------------------------------
-Ran 59 tests in 10.248s
+Ran 72 tests in 11.829s
 
 OK

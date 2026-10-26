@@ -42,3 +42,8 @@ Weekday schedules use Monday–Friday expected occurrences, not all calendar day
 ## Acceptance
 
 All 40 workflows appear with evidence and separate warnings. Original results and every sourced correction survive restart. Original/corrected frequencies obey the strict policy. Tests exercise short histories, recurring runs following failures, appropriate expected calendars, and the actual CSV without asserting provisional aggregate counts.
+
+
+## Pre-submission review amendment (engine 1.1)
+
+See `review-fixes.md` for reproduced failures and regression evidence. Lower evidence gates for proving a schedule must not erase short conflicting sequences: four-start resolved faster sequences now block automatic approval even when insufficient for Too frequent. A failed recurring sequence does not establish retry ancestry. Duplicate CSV headers are rejected; malformed row widths warn and block approval. Month/quarter evidence uses nominal calendar occurrences before weekend shifts, not the shifted observation's month. Potential inactivity requires both a long silence and, for supported calendars, an overdue next occurrence. The original supplied SPEC remains intact.

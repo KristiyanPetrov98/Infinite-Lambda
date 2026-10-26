@@ -14,7 +14,7 @@ from decimal import Decimal, InvalidOperation
 from itertools import combinations
 from statistics import mean, median
 
-ENGINE_VERSION = "1.0"
+ENGINE_VERSION = "1.1"
 BAD_STATUSES = {"failed", "aborted", "stopped"}
 KNOWN_STATUSES = BAD_STATUSES | {"succeeded"}
 
@@ -90,6 +90,8 @@ def eligibility(minutes: float | Decimal | None, supported: bool = True) -> str:
 def read_history(text: str) -> History:
     reader = csv.DictReader(io.StringIO(text.lstrip("\ufeff")))
     required = {"workflow_name", "start_time", "end_time", "status"}
+    if len(reader.fieldnames or []) != len(set(reader.fieldnames or [])):
+        raise ValueError("CSV headers must be unique; duplicate columns are ambiguous.")
     if not required.issubset(reader.fieldnames or []):
         raise ValueError("CSV must include workflow_name, start_time, end_time, status.")
     workflows, counts, issues = defaultdict(list), Counter(), defaultdict(list)
@@ -101,6 +103,9 @@ def read_history(text: str) -> History:
             continue
         counts[name] += 1
         workflows[name]  # Retain workflows whose every start is invalid.
+        if None in row or any(value is None for value in row.values()):
+            issues[name].append(f"Row {row_number}: wrong number of CSV fields; eligibility may be affected.")
+            continue
         try:
             start = datetime.fromisoformat((row.get("start_time") or "").strip())
             if start.tzinfo is not None:
@@ -164,6 +169,7 @@ def intraday(runs: list[Run], policy: EvidencePolicy) -> tuple[str, str, list[st
                 "All execution statuses included; overnight gaps excluded from period fitting."])
 
     sequences = []
+    suspicious = []
     for d, values in days.items():
         # Near-hourly analysis uses complete contiguous sequences, never cherry-picked windows.
         groups = [[]]
@@ -172,14 +178,14 @@ def intraday(runs: list[Run], policy: EvidencePolicy) -> tuple[str, str, list[st
                 groups.append([])
             groups[-1].append(v)
         for g in groups:
-            if len(g) >= policy.hourly_per_day:
+            if len(g) >= 4:
                 p, residual, band = fit(g)
-                if 54 <= p <= 66:
+                if 0 < p and p + band < 60 - 1e-9 and residual <= min(3, p * .1):
+                    suspicious.append((d, g, p, residual, band))
+                if len(g) >= policy.hourly_per_day and 54 <= p <= 66:
                     sequences.append((d, g, p, residual, band))
     sufficient = len({s[0] for s in sequences}) >= 2 or any(
         len(s[1]) >= policy.hourly_single_day for s in sequences)
-    if not sufficient:
-        return None
     evidence = [f"{d}: {len(g)} starts, fitted period {p:.4f} min, max residual "
                 f"{res:.2f} min, drift band ±{band:.4f} min."
                 for d, g, p, res, band in sequences]
@@ -190,8 +196,13 @@ def intraday(runs: list[Run], policy: EvidencePolicy) -> tuple[str, str, list[st
         len(s[1]) >= policy.hourly_single_day for s in faster):
         p = median(s[2] for s in faster)
         return f"Every {p:.4f} minutes (sustained drift)", "Too frequent", evidence
-    if faster:
-        return "Near hourly; conflicting drift evidence", "Unknown", evidence
+    if suspicious:
+        evidence += [f"{d}: shorter/conflicting sequence of {len(g)} starts fitted at {p:.4f} min; "
+                     "insufficient evidence for automatic faster classification does not establish retries or hourly jitter."
+                     for d, g, p, _, _ in suspicious]
+        return "Possible faster recurrence; unresolved", "Unknown", evidence
+    if not sufficient:
+        return None
     if all(s[2] < 60 - 1e-9 for s in sequences):
         return "Near hourly; consistently negative but unresolved drift", "Unknown", evidence
     period = mean(s[2] for s in sequences)
@@ -285,6 +296,7 @@ def calendar_candidates(runs: list[Run], policy: EvidencePolicy) -> list[Candida
     horizon = last + timedelta(days=100)
     days = list(date_range(first, horizon))
     observed_dates = {r.start.date() for r in runs}
+    nominal_months = {}
     patterns = [("Daily", days, policy.daily_dates),
                 ("Weekdays (Mon–Fri)", [d for d in days if d.weekday() < 5], policy.daily_dates)]
     for w in sorted({d.weekday() for d in observed_dates}):
@@ -293,14 +305,19 @@ def calendar_candidates(runs: list[Run], policy: EvidencePolicy) -> list[Candida
         patterns.append(("Fortnightly", [d for d in days if d.toordinal() % 14 == phase], policy.weekly_dates))
     months = list(range(month_index(first), month_index(horizon) + 1))
     rules = {m: monthly_rules(m) for m in months}
-    for rule in rules[months[0]]:
-        dates = [rules[m][rule] for m in months if rule in rules[m]]
+    for rule in dict.fromkeys(rule for m in months for rule in rules[m]):
+        nominal = {rules[m][rule]: m for m in months if rule in rules[m]}
+        dates = list(nominal)
         if len(months) >= 3:
-            patterns.append((f"Monthly ({rule})", dates, 3))
-        for phase in sorted({month_index(d) % 3 for d in observed_dates}):
-            qdates = [d for d in dates if month_index(d) % 3 == phase]
+            label = f"Monthly ({rule})"
+            patterns.append((label, dates, 3))
+            nominal_months[label] = nominal
+        for phase in range(3):
+            qdates = [d for d in dates if nominal[d] % 3 == phase]
             if len(qdates) >= 3:
-                patterns.append((f"Quarterly ({rule})", qdates, 3))
+                label = f"Quarterly ({rule})"
+                patterns.append((label, qdates, 3))
+                nominal_months[label] = nominal
     doms = sorted({d.day for d in observed_dates})
     if len(months) >= 3:
         for a, b in combinations(doms, 2):
@@ -327,7 +344,8 @@ def calendar_candidates(runs: list[Run], policy: EvidencePolicy) -> list[Candida
                     matched.add(i)
             if len(matched) < minimum:
                 continue
-            matched_months = {month_index(runs[i].start.date()) for i in matched}
+            matched_months = {nominal_months.get(label, {}).get(expected[j].date(),
+                              month_index(expected[j].date())) for j in used}
             if label.startswith(("Monthly", "Twice monthly")) and (len(matched_months) < 3 or
                     max(matched_months) - min(matched_months) + 1 != len(matched_months)):
                 continue
@@ -349,6 +367,8 @@ def assess_extras(runs: list[Run], candidate: Candidate) -> tuple[list[int], lis
     extras = [i for i in range(len(runs)) if i not in candidate.matched]
     extra_runs = [runs[i] for i in extras]
     recurring_rows = set()
+    if intraday(extra_runs, DEFAULT_POLICY) is not None:
+        recurring_rows.update(r.row for r in extra_runs)
     if len(extra_runs) >= 3:
         for pattern in calendar_candidates(extra_runs, DEFAULT_POLICY):
             recurring_rows.update(extra_runs[j].row for j in pattern.matched)
@@ -390,9 +410,7 @@ def classify(history: History, policy: EvidencePolicy = DEFAULT_POLICY) -> list[
                                    ", ".join(f"{n} {s or 'blank status'}" for s, n in sorted(health.items())))
         if any(r.status not in KNOWN_STATUSES for r in runs):
             result.warnings.append("Unrecognized/blank statuses cannot establish retry ancestry.")
-        if latest and runs and (latest - runs[-1].start).days >= 21:
-            result.warnings.append(f"Potential inactivity: last run {(latest - runs[-1].start).days} days "
-                                   "before export's latest start. Not proof of retirement.")
+        next_expected = None
         if not runs:
             result.evidence.append("No valid start times.")
         elif len({r.start for r in runs}) != len(runs):
@@ -405,6 +423,8 @@ def classify(history: History, policy: EvidencePolicy = DEFAULT_POLICY) -> list[
                 candidates = calendar_candidates(runs, policy)
                 if candidates:
                     best = candidates[0]
+                    future = [t for t in best.expected if t > runs[-1].start + timedelta(minutes=10)]
+                    next_expected = min(future) if future else None
                     retries, conflicts = assess_extras(runs, best)
                     result.cadence = best.label
                     result.likely_retry_rows = retries
@@ -430,6 +450,12 @@ def classify(history: History, policy: EvidencePolicy = DEFAULT_POLICY) -> list[
                     result.evidence = ["No supported recurring pattern satisfies the evidence, coverage and clock-alignment gates.",
                                        f"{len(runs)} starts on {len({r.start.date() for r in runs})} distinct dates. "
                                        "Sparse or irregular history; names are not schedule evidence."]
+        if latest and runs and (latest - runs[-1].start).days >= 21:
+            if next_expected is None or latest > next_expected + timedelta(minutes=10):
+                result.warnings.append(f"Potential inactivity: last run {(latest - runs[-1].start).days} days "
+                                       "before export's latest start. " +
+                                       (f"Next inferred occurrence {next_expected} is overdue. " if next_expected else
+                                        "No supported next occurrence is available. ") + "Not proof of retirement.")
         if history.issues.get(name) or history.global_issues:
             result.decision = "Unknown"
             result.evidence.append("Invalid/unattributable rows could change eligibility; approval blocked.")

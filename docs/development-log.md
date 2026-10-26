@@ -17,3 +17,10 @@ AI-authored record of actual work, not an invented timesheet. Human effort and p
 Identified AI mistakes: the early retry implementation, two test expectations, and a weak initial HTTP probe. These were diagnosed and corrected. The malformed feedback filename, missing metadata, and ambiguous history are not attributed to AI.
 
 Time: no timer was started and human discovery time is unknown. No “four hours spent” claim is made. Test-runner durations are test execution, not development effort. The assignment's approximately four-hour guidance is a suggestion, not observed time. An actual logging checkpoint was read at **2026-10-26 11:18:39 Europe/Sofia**; it is not a claimed start or finish time.
+
+
+## Critical review and corrections
+
+After the candidate's manual validation, a fresh critical audit reran all 59 tests both in the prepared environment and in a clean temporary virtual environment; both passed. Adversarial probes nevertheless reproduced two unsafe approvals: short 59-minute drift was ignored after longer hourly history, and a regular failed 59-minute sequence was labeled as daily retries. Duplicate headers silently overwrote start-time evidence. The audit also found nominal-calendar weekend-shift rejection and premature inactivity warnings for monthly jobs. These are real implementation defects missed by the original tests, not invented AI errors.
+
+The user agreed with the findings and requested updates and a test rerun. Added 12 regression tests and a UI upgrade test, fixed the classifier/parser/calendar/warnings, and bumped the engine to 1.1. Earlier originals/corrections are retained and explicitly flagged as earlier-version reviews. The Streamlit cache key includes the engine version. All 72 tests passed with no skips. Regenerated evidence for all 40 workflows: 31/3/6 decisions unchanged. No source CSV or supplied SPEC edits, database deletions, fabricated effort estimates, or runtime AI were introduced. The honest time-spent submission gap remains for the candidate to complete.

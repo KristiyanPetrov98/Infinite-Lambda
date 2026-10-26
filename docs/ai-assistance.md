@@ -42,3 +42,10 @@ Discovery and SPEC were supplied as already completed. Earlier discovery convers
 Original inputs are retained in the repository. Document instructions were distinguished from this request: assignment contact details did not authorize contacting anyone, and the feedback request to wait for 90 days did not override short-history classification. No runtime model interprets the CSV.
 
 See `development-log.md` for actual diagnoses/fixes, `spec-review.md` for rationale, and `data/classification_results.json` for measured outcomes. The full chat remains with the user; this file does not claim to reproduce every tool call.
+
+
+## Subsequent review and update prompts
+
+The user requested an independent, critical review of the actual code against the assignment, SPEC and six feedback messages, focusing on unsafe approvals, retries, the boundary, calendars, invalid records, audit preservation, reproducibility and documentation. The review was another adversarial pass by the same Codex assistant, not an independent human or second-model certification. Its concrete counterexamples exposed bugs not covered by the original 59 passing tests.
+
+The user's update instruction was: “Alright, I agree with all of your findings. Update the project and re-run the tests.” Codex implemented the focused fixes and regression tests documented in `review-fixes.md`, updated the evidence and documentation, and reran the complete suite. Earlier statements about 59 tests describe the historical baseline; the current suite has 72 passing tests. Actual human time spent remains unavailable and has not been invented.

@@ -79,6 +79,12 @@ class CorrectionStore:
             db.execute("INSERT OR IGNORE INTO originals VALUES (?, ?, ?, ?)",
                        (dataset, result.workflow, result.engine_version, payload))
 
+    def older_versions(self, dataset: str, engine: str) -> list[str]:
+        with self.connect() as db:
+            return [row[0] for row in db.execute(
+                "SELECT DISTINCT engine FROM originals WHERE dataset=? AND engine!=? ORDER BY engine",
+                (dataset, engine))]
+
     def append(self, dataset: str, result: Result, frequency: str, minutes: str,
                reason: str, source: str, reviewer: str = "") -> dict:
         if not reason.strip() or not source.strip():

@@ -72,8 +72,12 @@ class CorrectionTests(unittest.TestCase):
 
     def test_engine_version_scopes_history(self):
         self.append()
+        previous = self.result.engine_version
         self.result.engine_version = "next"
         self.assertEqual(self.store.history(self.dataset, self.result), [])
+        self.assertEqual(self.store.older_versions(self.dataset, "next"), [previous])
+        self.result.engine_version = previous
+        self.assertEqual(len(self.store.history(self.dataset, self.result)), 1)
 
 
 if __name__ == "__main__":

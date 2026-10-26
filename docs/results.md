@@ -126,28 +126,24 @@ The provisional 30/3/7 split was not an expected answer. The implemented third-b
 
 ## Inactivity and health
 
-- **wf_BILL_INVOICE_WEEKLY**: Potential inactivity: last run 25 days before export's latest start. Not proof of retirement.
 - **wf_CRM_CONTACTS**: Execution health (does not determine frequency): 1 aborted Gaps in expected schedule; missing logs and missed executions cannot be distinguished.
 - **wf_DIM_CUSTOMER**: Execution health (does not determine frequency): 2 stopped
 - **wf_DQ_ADHOC_RECON**: Execution health (does not determine frequency): 2 failed
 - **wf_FIN_ACCRUALS_V2**: Execution health (does not determine frequency): 3 failed
 - **wf_FIN_AP_INVOICES**: Execution health (does not determine frequency): 1 failed
-- **wf_FIN_BUDGET_ACTUALS**: Potential inactivity: last run 23 days before export's latest start. Not proof of retirement.
-- **wf_FIN_FA_DEPRECIATION**: Potential inactivity: last run 29 days before export's latest start. Not proof of retirement.
+- **wf_FIN_FA_DEPRECIATION**: Potential inactivity: last run 29 days before export's latest start. No supported next occurrence is available. Not proof of retirement.
 - **wf_FIN_GL_DAILY_LOAD**: Execution health (does not determine frequency): 3 failed
-- **wf_FIN_MONTH_END_CLOSE**: Potential inactivity: last run 26 days before export's latest start. Not proof of retirement.
-- **wf_FIN_QTR_REG_RPT**: Potential inactivity: last run 78 days before export's latest start. Not proof of retirement.
+- **wf_FIN_QTR_REG_RPT**: Potential inactivity: last run 78 days before export's latest start. No supported next occurrence is available. Not proof of retirement.
 - **wf_HR_PAYROLL_MONTHLY**: Execution health (does not determine frequency): 1 failed
 - **wf_INV_STOCK_HOURLY**: Execution health (does not determine frequency): 1 failed
 - **wf_LEGACY_SFTP_PULL**: Execution health (does not determine frequency): 13 failed
 - **wf_MDM_PRODUCT_MERGE**: Execution health (does not determine frequency): 1 aborted
-- **wf_MKT_CAMPAIGNS**: Execution health (does not determine frequency): 1 failed Potential inactivity: last run 40 days before export's latest start. Not proof of retirement.
+- **wf_MKT_CAMPAIGNS**: Execution health (does not determine frequency): 1 failed Potential inactivity: last run 40 days before export's latest start. Next inferred occurrence 2026-08-18 06:30:07 is overdue. Not proof of retirement.
 - **wf_MKT_SEGMENT_REBUILD**: Execution health (does not determine frequency): 1 aborted
 - **wf_PAY_AUTH_HOURLY**: Execution health (does not determine frequency): 1 failed
 - **wf_RISK_EXPOSURE_WKLY**: Execution health (does not determine frequency): 1 failed
 - **wf_SLS_ORDERS_INCR**: Execution health (does not determine frequency): 2 failed
 - **wf_SLS_PIPELINE**: Execution health (does not determine frequency): 1 stopped
-- **wf_SLS_TERRITORY_LOAD**: Potential inactivity: last run 24 days before export's latest start. Not proof of retirement.
 - **wf_TRD_POSITIONS**: Execution health (does not determine frequency): 1 failed
 - **wf_TRSY_CASH_DAILY**: Gaps in expected schedule; missing logs and missed executions cannot be distinguished.
 - **wf_WEB_CLICKS**: Execution health (does not determine frequency): 1 aborted, 1 failed

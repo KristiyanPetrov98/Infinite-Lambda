@@ -20,11 +20,10 @@
         "Equivalent observed fits (not distinguishable from this history): Monthly (business day 1 (Mon\u2013Fri))"
       ],
       "warnings": [
-        "Potential inactivity: last run 25 days before export's latest start. Not proof of retirement.",
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -45,7 +44,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -65,7 +64,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -85,7 +84,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -106,7 +105,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -126,7 +125,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -149,7 +148,7 @@
       "likely_retry_rows": [
         698
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -165,11 +164,10 @@
         "Pattern: Monthly (business day 3 (Mon\u2013Fri)); observed clock anchor near 06:00."
       ],
       "warnings": [
-        "Potential inactivity: last run 23 days before export's latest start. Not proof of retirement.",
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -188,7 +186,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -204,11 +202,11 @@
         "3 starts on 3 distinct dates. Sparse or irregular history; names are not schedule evidence."
       ],
       "warnings": [
-        "Potential inactivity: last run 29 days before export's latest start. Not proof of retirement.",
+        "Potential inactivity: last run 29 days before export's latest start. No supported next occurrence is available. Not proof of retirement.",
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -227,7 +225,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -252,7 +250,7 @@
         321,
         333
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -272,7 +270,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -291,7 +289,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -308,11 +306,10 @@
         "Equivalent observed fits (not distinguishable from this history): Monthly (last weekday)"
       ],
       "warnings": [
-        "Potential inactivity: last run 26 days before export's latest start. Not proof of retirement.",
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -328,11 +325,11 @@
         "1 starts on 1 distinct dates. Sparse or irregular history; names are not schedule evidence."
       ],
       "warnings": [
-        "Potential inactivity: last run 78 days before export's latest start. Not proof of retirement.",
+        "Potential inactivity: last run 78 days before export's latest start. No supported next occurrence is available. Not proof of retirement.",
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -351,7 +348,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -374,7 +371,7 @@
       "likely_retry_rows": [
         629
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -393,7 +390,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -412,7 +409,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -435,7 +432,7 @@
       "likely_retry_rows": [
         574
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -455,7 +452,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -475,7 +472,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -492,14 +489,14 @@
       ],
       "warnings": [
         "Execution health (does not determine frequency): 1 failed",
-        "Potential inactivity: last run 40 days before export's latest start. Not proof of retirement.",
         "Likely retries at CSV rows [372]: off supported schedule, after failure/abort/stop, within 24h, before next expected start. Preserved; ancestry unverified.",
+        "Potential inactivity: last run 40 days before export's latest start. Next inferred occurrence 2026-08-18 06:30:07 is overdue. Not proof of retirement.",
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [
         372
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -518,7 +515,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -541,7 +538,7 @@
       "likely_retry_rows": [
         607
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -560,7 +557,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -581,7 +578,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -600,7 +597,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -623,7 +620,7 @@
       "likely_retry_rows": [
         524
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -643,7 +640,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -662,7 +659,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -686,7 +683,7 @@
         391,
         541
       ],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -706,7 +703,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -722,11 +719,10 @@
         "Pattern: Monthly (day 2); observed clock anchor near 04:15."
       ],
       "warnings": [
-        "Potential inactivity: last run 24 days before export's latest start. Not proof of retirement.",
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -746,7 +742,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -767,7 +763,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Engineer review"
     },
     {
@@ -787,7 +783,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -809,7 +805,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     },
     {
@@ -829,7 +825,7 @@
         "History inference only; scheduler, timezone and holiday calendar are unavailable."
       ],
       "likely_retry_rows": [],
-      "engine_version": "1.0",
+      "engine_version": "1.1",
       "routing": "Standard migration"
     }
   ]

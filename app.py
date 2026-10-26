@@ -9,7 +9,7 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
-from classifier import classify, read_history
+from classifier import ENGINE_VERSION, classify, read_history
 from corrections import CALENDAR_FREQUENCIES, CorrectionStore, dataset_id
 
 ROOT = Path(__file__).resolve().parent
@@ -20,7 +20,8 @@ st.caption("Frequency eligibility is separate from execution health and migratio
 
 
 @st.cache_data(show_spinner=False)
-def analyze(data: bytes):
+def analyze(data: bytes, engine_version: str):
+    # Include the imported engine version in Streamlit's cache key on upgrades.
     text = data.decode("utf-8-sig")
     history = read_history(text)
     return classify(history), history
@@ -30,7 +31,7 @@ def main():
     uploaded = st.file_uploader("Run history CSV", type=["csv"], help="Leave empty to review the supplied 40-workflow dataset.")
     data = uploaded.getvalue() if uploaded else (ROOT / "data/run_history.csv").read_bytes()
     try:
-        results, history = analyze(data)
+        results, history = analyze(data, ENGINE_VERSION)
     except (ValueError, UnicodeError) as exc:
         st.error(f"Cannot read CSV: {exc}")
         return
@@ -40,6 +41,12 @@ def main():
     for issue in history.global_issues:
         st.warning(issue)
     store = CorrectionStore(os.environ.get("FLOWLINE_DB", str(ROOT / ".local/corrections.sqlite3")))
+    older = store.older_versions(digest, ENGINE_VERSION)
+    if older:
+        st.warning("Saved reviews from engine " + ", ".join(older) +
+                   " remain in the local database. This engine creates a separate original result; "
+                   "previous-version corrections are preserved but are not automatically applied. "
+                   "Keep your database backup and review those corrections against the updated evidence.")
     for r in results:
         store.register(digest, r)
     reviews = {r.workflow: store.review(digest, r) for r in results}
